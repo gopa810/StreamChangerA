@@ -1,0 +1,1434 @@
+<streamtotext>
+  <sa>0	spaces	[\040\t]+	False	0</sa>
+  <sa>0	newline	[\n\r]+	False	0</sa>
+  <sa>0	comment	\/\*(.*)\*\/	True	0</sa>
+  <sa>0	comment_inline	\/\/(.*)[\r\n]	True	0</sa>
+  <sa>0	pp_include	\#[\040\t]*include	True	1</sa>
+  <sa>0	pp_define	\#[\040\t]*define	True	2</sa>
+  <sa>0	pp_undef	\#[\040\t]*undef	True	2</sa>
+  <sa>0	pp_ifndef	\#[\040\t]*ifndef	True	5</sa>
+  <sa>0	pp_ifndef	\#[\040\t]*ifdef	True	5</sa>
+  <sa>0	pp_endif	\#[\040\t]*endif	True	0</sa>
+  <sa>0	pp_if	\#[\040\t]*if	True	7</sa>
+  <sa>0	pp_elif	\#[\040\t]*elif	True	7</sa>
+  <sa>0	pp_else	\#[\040\t]*else	True	0</sa>
+  <sa>0	pp_pragma	\#[\040\t]*pragma	True	7</sa>
+  <sa>0	pp_line	\#[\040\t]*line	True	7</sa>
+  <sa>0	pp_error	\#[\040\t]*error	True	7</sa>
+  <sa>0	pp_nondir	\#	True	7</sa>
+  <sa>
+  </sa>
+  <sa>0	spaces	[\040\t]+	False	-1</sa>
+  <sa>0	symbol	[a-zA-Z\x5F][a-zA-Z0-9\x5F]*	True	-1</sa>
+  <sa>0	bra	(\(|\)|\[|\]|\{|\}|\&lt;\:|\:\&gt;|\&lt;\%|\%\&gt;|\%\:\%\:|\%\:)	True	-1</sa>
+  <sa>0	punc	(\.\.\.|;|,|\:|\#\#|\#)	True	-1</sa>
+  <sa>0	oper	(\&lt;\&lt;\=|\&gt;\&gt;\=|\&amp;\&amp;|\|\||\+\+|\-\-|\-\&gt;\*|\-\&gt;)	True	-1</sa>
+  <sa>0	oper	(\:\:|\+\=|\-\=|\*\=|\/\=|\=\=|\^\=|\|\=|\&amp;\=|\%\=|\!=|\&lt;\=|\&gt;\=|\&lt;\&lt;|\&gt;\&gt;)	True	-1</sa>
+  <sa>0	oper	(\~|\&amp;|\%|\+|\-|\*|\/|\||\=|\.\*|\.|\&lt;|\&gt;|!|\?|new|delete|\^")	True	-1</sa>
+  <sa>0	str_lit	[u8|u|U|L]?\"([^\\\"\r\n]|\\.)*\"	True	-1</sa>
+  <sa>0	int_lit	(\d)+(u|U|l|L|ll|LL)?(u|U|l|L|ll|LL)?	True	-1</sa>
+  <sa>0	oct_lit	[0-7]+(u|U|l|L|ll|LL)?(u|U|l|L|ll|LL)?	True	-1</sa>
+  <sa>0	hex_lit	0[x|X][\d|a-f|A-F]+(u|U|l|L|ll|LL)?(u|U|l|L|ll|LL)?	True	-1</sa>
+  <sa>0	char_lit	[u|U|L]?\'([^\\\'\r\n]|\\.)+\'	True	-1</sa>
+  <sa>0	double_lit	(\+|\-)?(\d)*(\.\d*)?([eE][\+\-]?(\d)+)?	True	-1</sa>
+  <sa>0	other	.	True	-1</sa>
+  <sa>
+  </sa>
+  <sa>1	spaces	[\040\t]+	False	1</sa>
+  <sa>1	p_inc_fl	\&lt;[^&gt;]+\&gt;	True	0</sa>
+  <sa>1	p_inc_st	\"[^\"]+\"	True	0</sa>
+  <sa>
+  </sa>
+  <sa>2	spaces	[\040\t]+	False	2</sa>
+  <sa>2	pp_def_symbol	[a-zA-Z\x5F][a-zA-Z0-9\x5F]*	True	3</sa>
+  <sa>2	comment_inline	\/\/(.*)[\r\n]	True	2</sa>
+  <sa>2	pp_end	[\n\r]+	False	0</sa>
+  <sa>
+  </sa>
+  <sa>3	pp_def_arg1	\(	True	3</sa>
+  <sa>3	pp_def_arg2	\)	True	7</sa>
+  <sa>3	pp_def_arg3	[a-zA-Z\x5F][a-zA-Z0-9\x5F]*	True	3</sa>
+  <sa>3	pp_def_arg_s	,	True	3</sa>
+  <sa>3	spaces	[\040\t]+	False	7</sa>
+  <sa>3	pp_end	\/\/(.*)[\r\n]	True	0</sa>
+  <sa>3	pp_end	[\r\n]	False	0</sa>
+  <sa>
+  </sa>
+  <sa>5	spaces	[\040\t]+	False	5</sa>
+  <sa>5	symbol	[a-zA-Z\x5F][a-zA-Z0-9\x5F]*	True	5</sa>
+  <sa>5	pp_end	[\r\n]	False	0</sa>
+  <sa>5	pp_end	\/\/(.*)[\r\n]	True	0</sa>
+  <sa>
+  </sa>
+  <sa>7	pp_end	[\r\n]	False	0</sa>
+  <sa>7	pp_end	\/\/(.*)[\r\n]	True	0</sa>
+  <sa>7	spaces	[\040\t]+	False	-1</sa>
+  <sa>7	number	(\+|\-)?(\d)*(\.\d*)?([eE][\+\-](\d)+)?	True	-1</sa>
+  <sa>7	symbol	[a-zA-Z\x5F][a-zA-Z0-9\x5F]*	True	-1</sa>
+  <sa>7	bra	(\(|\)|\[|\]|\{|\}|\&lt;\:|\:\&gt;|\&lt;\%|\%\&gt;|\%\:\%\:|\%\:)	True	-1</sa>
+  <sa>7	punc	(\.\.\.|;|,|\:|\#\#|\#)	True	-1</sa>
+  <sa>7	oper	(\&lt;\&lt;\=|\&gt;\&gt;\=|\&amp;\&amp;|\|\||\+\+|\-\-|\-\&gt;\*|\-\&gt;)	True	-1</sa>
+  <sa>7	oper	(\:\:|\+\=|\-\=|\*\=|\/\=|\=\=|\^\=|\|\=|\&amp;\=|\%\=|\!=|\&lt;\=|\&gt;\=|\&lt;\&lt;|\&gt;\&gt;)	True	-1</sa>
+  <sa>7	oper	(\~|\&amp;|\%|\+|\-|\*|\/|\||\=|\.\*|\.|\&lt;|\&gt;|!|\?|new|delete|\^")	True	-1</sa>
+  <sa>7	str_lit	[u8|u|U|L]?\"([^\\\"\r\n]|\\.)*\"	True	-1</sa>
+  <sa>7	int_lit	(\+|\-)?(\d)+	True	-1</sa>
+  <sa>7	char_lit	[u|U|L]?\'([^\\\'\r\n]|\\.)+\'	True	-1</sa>
+  <sa>7	double_lit	(\+|\-)?(\d)*(\.\d*)?([eE][\+\-]?(\d)+)?	True	-1</sa>
+  <sa>7	other	.	True	-1</sa>
+  <sa>
+  </sa>
+  <sb>additive-expression</sb>
+  <sb>    additive-expression '- multiplicative-expression</sb>
+  <sb>    additive-expression '+ multiplicative-expression</sb>
+  <sb>    multiplicative-expression</sb>
+  <sb>and-expression</sb>
+  <sb>    and-expression '&amp; equality-expression</sb>
+  <sb>    equality-expression</sb>
+  <sb>assignment-expression</sb>
+  <sb>    conditional-expression</sb>
+  <sb>    logical-or-expression '%= initializer-clause</sb>
+  <sb>    logical-or-expression '&amp;= initializer-clause</sb>
+  <sb>    logical-or-expression '*= initializer-clause</sb>
+  <sb>    logical-or-expression '/= initializer-clause</sb>
+  <sb>    logical-or-expression '^= initializer-clause</sb>
+  <sb>    logical-or-expression '|= initializer-clause</sb>
+  <sb>    logical-or-expression '+= initializer-clause</sb>
+  <sb>    logical-or-expression '&lt;&lt;= initializer-clause</sb>
+  <sb>    logical-or-expression '= initializer-clause</sb>
+  <sb>    logical-or-expression '-= initializer-clause</sb>
+  <sb>    logical-or-expression '&gt;&gt;= initializer-clause</sb>
+  <sb>    throw-expression</sb>
+  <sb>cast-expression</sb>
+  <sb>    '( type-id ') cast-expression</sb>
+  <sb>    unary-expression</sb>
+  <sb>class-name</sb>
+  <sb>    identifier</sb>
+  <sb>    simple-template-id</sb>
+  <sb>conditional-expression</sb>
+  <sb>    logical-or-expression</sb>
+  <sb>    logical-or-expression '? expression ': assignment-expression</sb>
+  <sb>equality-expression</sb>
+  <sb>    equality-expression '!= relational-expression</sb>
+  <sb>    equality-expression '== relational-expression</sb>
+  <sb>    relational-expression</sb>
+  <sb>expression</sb>
+  <sb>    assignment-expression</sb>
+  <sb>    expression ', assignment-expression</sb>
+  <sb>exclusive-or-expression</sb>
+  <sb>    and-expression</sb>
+  <sb>    exclusive-or-expression '^ and-expression</sb>
+  <sb>id-expression</sb>
+  <sb>    qualified-id</sb>
+  <sb>    unqualified-id</sb>
+  <sb>inclusive-or-expression</sb>
+  <sb>    exclusive-or-expression</sb>
+  <sb>    inclusive-or-expression '| exclusive-or-expression</sb>
+  <sb>logical-and-expression</sb>
+  <sb>    inclusive-or-expression</sb>
+  <sb>    logical-and-expression '&amp;&amp; inclusive-or-expression</sb>
+  <sb>logical-or-expression</sb>
+  <sb>    logical-and-expression</sb>
+  <sb>    logical-or-expression '|| logical-and-expression</sb>
+  <sb>multiplicative-expression</sb>
+  <sb>    multiplicative-expression '% pm-expression</sb>
+  <sb>    multiplicative-expression '* pm-expression</sb>
+  <sb>    multiplicative-expression '/ pm-expression</sb>
+  <sb>    pm-expression</sb>
+  <sb>nested-name-specifier</sb>
+  <sb>    decltype-specifier '::</sb>
+  <sb>    namespace-name '::</sb>
+  <sb>    nested-name-specifier identifier '::</sb>
+  <sb>    nested-name-specifier simple-template-id '::</sb>
+  <sb>    nested-name-specifier 'template simple-template-id '::</sb>
+  <sb>    type-name '::</sb>
+  <sb>pm-expression</sb>
+  <sb>    cast-expression</sb>
+  <sb>    pm-expression '.* cast-expression</sb>
+  <sb>    pm-expression '-&gt;* cast-expression</sb>
+  <sb>postfix-expression</sb>
+  <sb>    'const_cast '&lt; type-id '&gt; '( expression ')</sb>
+  <sb>    'dynamic_cast '&lt; type-id '&gt; '( expression ')</sb>
+  <sb>    primary-expression</sb>
+  <sb>    'reinterpret_cast '&lt; type-id '&gt; '( expression ')</sb>
+  <sb>    simple-type-specifier '( ')</sb>
+  <sb>    simple-type-specifier '( expression-list ')</sb>
+  <sb>    simple-type-specifier braced-init-list</sb>
+  <sb>    'static-cast '&lt; type-id '&gt; '( expression ')</sb>
+  <sb>    'typeid '( expression ')</sb>
+  <sb>    'typeid '( type-id ')</sb>
+  <sb>    typename-specifier '( ')</sb>
+  <sb>    typename-specifier '( expression-list ')</sb>
+  <sb>    typename-specifier braced-init-list</sb>
+  <sb>    postfix-expression '[ expression ']</sb>
+  <sb>    postfix-expression '[ ']</sb>
+  <sb>    postfix-expression '[ braced-init-list ']</sb>
+  <sb>    postfix-expression '( ')</sb>
+  <sb>    postfix-expression '( expression-list ')</sb>
+  <sb>    postfix-expression '. 'template id-expression</sb>
+  <sb>    postfix-expression '. id-expression</sb>
+  <sb>    postfix-expression '-&gt; 'template id-expression</sb>
+  <sb>    postfix-expression '-&gt; id-expression</sb>
+  <sb>    postfix-expression '. pseudo-destructor-name</sb>
+  <sb>    postfix-expression '-&gt; pseudo-destructor-name</sb>
+  <sb>    postfix-expression '++</sb>
+  <sb>    postfix-expression '--</sb>
+  <sb>preprocessing-file</sb>
+  <sb>    group-part *</sb>
+  <sb>group</sb>
+  <sb>    group-part +</sb>
+  <sb>group-part</sb>
+  <sb>    if-section</sb>
+  <sb>    control-line</sb>
+  <sb>    text-line</sb>
+  <sb>    '# non-directive</sb>
+  <sb>if-section</sb>
+  <sb>    if-group elif-groups else-group endif-line</sb>
+  <sb>    if-group elif-groups endif-line</sb>
+  <sb>    if-group else-group endif-line</sb>
+  <sb>    if-group endif-line</sb>
+  <sb>if-group</sb>
+  <sb>    /pp_if constant-expression /pp_end group</sb>
+  <sb>    /pp_if constant-expression /pp_end</sb>
+  <sb>    /pp_ifdef identifier /pp_end group</sb>
+  <sb>    /pp_ifdef identifier /pp_end</sb>
+  <sb>    /pp_ifndef identifier /pp_end group</sb>
+  <sb>    /pp_ifndef identifier /pp_end</sb>
+  <sb>elif-groups</sb>
+  <sb>    elif-group</sb>
+  <sb>    elif-groups elif-group</sb>
+  <sb>elif-group</sb>
+  <sb>    /pp_elif constant-expression /pp_end group</sb>
+  <sb>    /pp_elif constant-expression /pp_end</sb>
+  <sb>else-group</sb>
+  <sb>    /pp_else group</sb>
+  <sb>    /pp_else</sb>
+  <sb>endif-line</sb>
+  <sb>    /pp_endif</sb>
+  <sb>control-line</sb>
+  <sb>    /pp_include /p_inc_fl</sb>
+  <sb>    /pp_include /p_inc_st</sb>
+  <sb>    /pp_define /pp_def_symbol replacement-list /pp_end</sb>
+  <sb>    /pp_define /pp_def_symbol /pp_def_arg1 /pp_def_arg2 replacement-list /pp_end</sb>
+  <sb>    /pp_define /pp_def_symbol /pp_def_arg1 define-arguments /pp_def_arg2 replacement-list /pp_end</sb>
+  <sb>    /pp_define /pp_def_symbol /pp_end</sb>
+  <sb>    /pp_define /pp_def_symbol /pp_def_arg1 /pp_def_arg2 /pp_end</sb>
+  <sb>    /pp_define /pp_def_symbol /pp_def_arg1 define-arguments /pp_def_arg2 /pp_end</sb>
+  <sb>    /pp_undef /pp_def_symbol /pp_end</sb>
+  <sb>    /pp_line pp-tokens /pp_end</sb>
+  <sb>    /pp_error /pp_end</sb>
+  <sb>    /pp_error pp-tokens /pp_end</sb>
+  <sb>    /pp_pragma /pp_end</sb>
+  <sb>    /pp_pragma pp-tokens /pp_end</sb>
+  <sb>    /pp_nondir /pp_end</sb>
+  <sb>define-arguments</sb>
+  <sb>    /pp_def_arg3</sb>
+  <sb>    define-arguments /pp_def_arg_s /pp_def_arg3</sb>
+  <sb>text-line</sb>
+  <sb>    preprocessing-token +</sb>
+  <sb>non-directive</sb>
+  <sb>    pp-tokens</sb>
+  <sb>replacement-list</sb>
+  <sb>    pp-tokens</sb>
+  <sb>pp-tokens</sb>
+  <sb>    preprocessing-token</sb>
+  <sb>    pp-tokens preprocessing-token</sb>
+  <sb>primary-expression</sb>
+  <sb>    '( expression ')</sb>
+  <sb>    id-expression</sb>
+  <sb>    lambda-expression</sb>
+  <sb>    literal</sb>
+  <sb>    'this</sb>
+  <sb>qualified-id</sb>
+  <sb>    ':: identifier</sb>
+  <sb>    ':: literal-operator-id</sb>
+  <sb>    ':: nested-name-specifier 'template unqualified-id</sb>
+  <sb>    ':: nested-name-specifier unqualified-id</sb>
+  <sb>    ':: operator-function-id</sb>
+  <sb>    ':: template-id</sb>
+  <sb>    nested-name-specifier 'template unqualified-id</sb>
+  <sb>    nested-name-specifier unqualified-id</sb>
+  <sb>relational-expression</sb>
+  <sb>    relational-expression '&lt; shift-expression</sb>
+  <sb>    relational-expression '&lt;= shift-expression</sb>
+  <sb>    relational-expression '&gt; shift-expression</sb>
+  <sb>    relational-expression '&gt;= shift-expression</sb>
+  <sb>    shift-expression</sb>
+  <sb>shift-expression</sb>
+  <sb>    additive-expression</sb>
+  <sb>    shift-expression '&lt;&lt; additive-expression</sb>
+  <sb>    shift-expression '&gt;&gt; additive-expression</sb>
+  <sb>simple-template-id</sb>
+  <sb>    template-name '&lt; '&gt;</sb>
+  <sb>    template-name '&lt; template-argument-list '&gt;</sb>
+  <sb>template-name</sb>
+  <sb>    identifier</sb>
+  <sb>template-argument</sb>
+  <sb>    constant-expression</sb>
+  <sb>    id-expression</sb>
+  <sb>    type-id</sb>
+  <sb>template-argument-list</sb>
+  <sb>    template-argument</sb>
+  <sb>    template-argument '...</sb>
+  <sb>    template-argument-list ', template-argument</sb>
+  <sb>    template-argument-list ', template-argument '...</sb>
+  <sb>unary-expression</sb>
+  <sb>    '-- cast-expression</sb>
+  <sb>    '++ cast-expression</sb>
+  <sb>    'alignof '( type-id ')</sb>
+  <sb>    delete-expression</sb>
+  <sb>    new-expression</sb>
+  <sb>    noexcept-expression</sb>
+  <sb>    postfix-expression</sb>
+  <sb>    'sizeof '( type-id ')</sb>
+  <sb>    'sizeof '... '( identifier ')</sb>
+  <sb>    'sizeof unary-expression</sb>
+  <sb>    unary-operator cast-expression</sb>
+  <sb>unary-operator</sb>
+  <sb>    '-</sb>
+  <sb>    '!</sb>
+  <sb>    '&amp;</sb>
+  <sb>    '*</sb>
+  <sb>    '~</sb>
+  <sb>    '+</sb>
+  <sb>unqualified-id</sb>
+  <sb>    '~ class-name</sb>
+  <sb>    '~ decltype-specifier</sb>
+  <sb>    conversion-function-id</sb>
+  <sb>    identifier</sb>
+  <sb>    literal-operator-id</sb>
+  <sb>    operator-function-id</sb>
+  <sb>    template-id</sb>
+  <sb>braced-init-list</sb>
+  <sb>    '{ '}</sb>
+  <sb>    '{ initializer-list ', '}</sb>
+  <sb>    '{ initializer-list '}</sb>
+  <sb>initializer-list</sb>
+  <sb>    initializer-clause</sb>
+  <sb>    initializer-clause '...</sb>
+  <sb>    initializer-list ', initializer-clause</sb>
+  <sb>    initializer-list ', initializer-clause '...</sb>
+  <sb>initializer-clause</sb>
+  <sb>    assignment-expression</sb>
+  <sb>    braced-init-list</sb>
+  <sb>constant-expression</sb>
+  <sb>    conditional-expression</sb>
+  <sb>expression-list</sb>
+  <sb>    initializer-list</sb>
+  <sb>type-name</sb>
+  <sb>    class-name</sb>
+  <sb>    enum-name</sb>
+  <sb>    simple-template-id</sb>
+  <sb>    typedef-name</sb>
+  <sb>decltype-specifier</sb>
+  <sb>    'decltype '( expression ')</sb>
+  <sb>enum-name</sb>
+  <sb>    identifier</sb>
+  <sb>delete-expression</sb>
+  <sb>    ':: 'delete '[ '] cast-expression</sb>
+  <sb>    ':: 'delete cast-expression</sb>
+  <sb>    'delete '[ '] cast-expression</sb>
+  <sb>    'delete cast-expression</sb>
+  <sb>noexcept-expression</sb>
+  <sb>    'noexcept '( expression ')</sb>
+  <sb>type-id</sb>
+  <sb>    type-specifier-seq</sb>
+  <sb>    type-specifier-seq abstract-declarator</sb>
+  <sb>abstract-declarator</sb>
+  <sb>    '...</sb>
+  <sb>    noptr-abstract-declarator parameters-and-qualifiers trailing-return-type</sb>
+  <sb>    parameters-and-qualifiers trailing-return-type</sb>
+  <sb>    ptr-abstract-declarator</sb>
+  <sb>ptr-abstract-declarator</sb>
+  <sb>    noptr-abstract-declarator</sb>
+  <sb>    ptr-operator</sb>
+  <sb>    ptr-operator ptr-abstract-declarator</sb>
+  <sb>ptr-operator</sb>
+  <sb>    '&amp;</sb>
+  <sb>    '&amp; attribute-specifier-seq</sb>
+  <sb>    '&amp;&amp;</sb>
+  <sb>    '&amp;&amp; attribute-specifier-seq</sb>
+  <sb>    '*</sb>
+  <sb>    '* attribute-specifier-seq</sb>
+  <sb>    '* attribute-specifier-seq cv-qualifier-seq</sb>
+  <sb>    '* cv-qualifier-seq</sb>
+  <sb>    ':: nested-name-specifier '*</sb>
+  <sb>    ':: nested-name-specifier '* attribute-specifier-seq</sb>
+  <sb>    ':: nested-name-specifier '* attribute-specifier-seq cv-qualifier-seq</sb>
+  <sb>    ':: nested-name-specifier '* cv-qualifier-seq</sb>
+  <sb>    nested-name-specifier '*</sb>
+  <sb>    nested-name-specifier '* attribute-specifier-seq</sb>
+  <sb>    nested-name-specifier '* attribute-specifier-seq cv-qualifier-seq</sb>
+  <sb>    nested-name-specifier '* cv-qualifier-seq</sb>
+  <sb>cv-qualifier-seq</sb>
+  <sb>    cv-qualifier</sb>
+  <sb>    cv-qualifier cv-qualifier-seq</sb>
+  <sb>cv-qualifier</sb>
+  <sb>    'const</sb>
+  <sb>    'volatile</sb>
+  <sb>attribute-specifier-seq</sb>
+  <sb>    attribute-specifier</sb>
+  <sb>attribute-specifier</sb>
+  <sb>    '[ '[ attribute-list '] ']</sb>
+  <sb>    alignment-specifier</sb>
+  <sb>alignment-specifier</sb>
+  <sb>    'alignas '( type-id ')</sb>
+  <sb>    'alignas '( type-id '... ')</sb>
+  <sb>attribute-list</sb>
+  <sb>    attribute</sb>
+  <sb>    attribute ',</sb>
+  <sb>    attribute ', attribute</sb>
+  <sb>    attribute ', attribute '...</sb>
+  <sb>    attribute '...</sb>
+  <sb>attribute</sb>
+  <sb>    attribute-token</sb>
+  <sb>    attribute-token attribute-argument-clause</sb>
+  <sb>attribute-token</sb>
+  <sb>    attribute-scoped-token</sb>
+  <sb>    identifier</sb>
+  <sb>attribute-scoped-token</sb>
+  <sb>    attribute-namespace ':: identifier</sb>
+  <sb>attribute-namespace</sb>
+  <sb>    identifier</sb>
+  <sb>attribute-argument-clause</sb>
+  <sb>    '( balanced-token-seq ')</sb>
+  <sb>balanced-token-seq</sb>
+  <sb>    balanced-token</sb>
+  <sb>    balanced-token-seq balanced-token</sb>
+  <sb>balanced-token</sb>
+  <sb>    '( balanced-token-seq ')</sb>
+  <sb>    '[ balanced-token-seq ']</sb>
+  <sb>    '{ balanced-token-seq '}</sb>
+  <sb>    token</sb>
+  <sb>token</sb>
+  <sb>    identifier</sb>
+  <sb>    keyword</sb>
+  <sb>    literal</sb>
+  <sb>    operator-token</sb>
+  <sb>    punctuator</sb>
+  <sb>identifier</sb>
+  <sb>    /symbol</sb>
+  <sb>keyword</sb>
+  <sb>    'alignas</sb>
+  <sb>    'alignof</sb>
+  <sb>    'asm</sb>
+  <sb>    'auto</sb>
+  <sb>    'bool</sb>
+  <sb>    'break</sb>
+  <sb>    'case</sb>
+  <sb>    'catch</sb>
+  <sb>    'char</sb>
+  <sb>    'char16_t</sb>
+  <sb>    'char32_t</sb>
+  <sb>    'class</sb>
+  <sb>    'const</sb>
+  <sb>    'const_cast</sb>
+  <sb>    'constexpr</sb>
+  <sb>    'continue</sb>
+  <sb>    'decltype</sb>
+  <sb>    'default</sb>
+  <sb>    'delete</sb>
+  <sb>    'do</sb>
+  <sb>    'double</sb>
+  <sb>    'dynamic_cast</sb>
+  <sb>    'else</sb>
+  <sb>    'enum</sb>
+  <sb>    'explicit</sb>
+  <sb>    'export</sb>
+  <sb>    'extern</sb>
+  <sb>    'false</sb>
+  <sb>    'float</sb>
+  <sb>    'for</sb>
+  <sb>    'friend</sb>
+  <sb>    'goto</sb>
+  <sb>    'if</sb>
+  <sb>    'inline</sb>
+  <sb>    'int</sb>
+  <sb>    'long</sb>
+  <sb>    'mutable</sb>
+  <sb>    'namespace</sb>
+  <sb>    'new</sb>
+  <sb>    'noexcept</sb>
+  <sb>    'nullptr</sb>
+  <sb>    'operator</sb>
+  <sb>    'private</sb>
+  <sb>    'protected</sb>
+  <sb>    'public</sb>
+  <sb>    'register</sb>
+  <sb>    'reinterpret_cast</sb>
+  <sb>    'return</sb>
+  <sb>    'short</sb>
+  <sb>    'signed</sb>
+  <sb>    'sizeof</sb>
+  <sb>    'static</sb>
+  <sb>    'static_assert</sb>
+  <sb>    'static_cast</sb>
+  <sb>    'struct</sb>
+  <sb>    'switch</sb>
+  <sb>    'template</sb>
+  <sb>    'this</sb>
+  <sb>    'thread_local</sb>
+  <sb>    'throw</sb>
+  <sb>    'true</sb>
+  <sb>    'try</sb>
+  <sb>    'typedef</sb>
+  <sb>    'typeid</sb>
+  <sb>    'typename</sb>
+  <sb>    'union</sb>
+  <sb>    'unsigned</sb>
+  <sb>    'using</sb>
+  <sb>    'virtual</sb>
+  <sb>    'void</sb>
+  <sb>    'volatile</sb>
+  <sb>    'wchar_t</sb>
+  <sb>    'while</sb>
+  <sb>operator-token</sb>
+  <sb>    '-</sb>
+  <sb>    '--</sb>
+  <sb>    '!</sb>
+  <sb>    '!=</sb>
+  <sb>    '#</sb>
+  <sb>    '##</sb>
+  <sb>    '%</sb>
+  <sb>    '%:</sb>
+  <sb>    '%:%:</sb>
+  <sb>    '%=</sb>
+  <sb>    '%&gt;</sb>
+  <sb>    '&amp;</sb>
+  <sb>    '&amp;&amp;</sb>
+  <sb>    '(</sb>
+  <sb>    ')</sb>
+  <sb>    '*</sb>
+  <sb>    '*=</sb>
+  <sb>    ',</sb>
+  <sb>    '.</sb>
+  <sb>    '.*</sb>
+  <sb>    '...</sb>
+  <sb>    '/</sb>
+  <sb>    '/=</sb>
+  <sb>    ':</sb>
+  <sb>    '::</sb>
+  <sb>    ':&gt;</sb>
+  <sb>    ';</sb>
+  <sb>    '?</sb>
+  <sb>    '[</sb>
+  <sb>    ']</sb>
+  <sb>    '^</sb>
+  <sb>    '^=</sb>
+  <sb>    '{</sb>
+  <sb>    '|</sb>
+  <sb>    '||</sb>
+  <sb>    '}</sb>
+  <sb>    '~</sb>
+  <sb>    '+</sb>
+  <sb>    '++</sb>
+  <sb>    '+=</sb>
+  <sb>    '&lt;</sb>
+  <sb>    '&lt;%</sb>
+  <sb>    '&lt;:</sb>
+  <sb>    '&lt;&lt;</sb>
+  <sb>    '&lt;&lt;=</sb>
+  <sb>    '&lt;=</sb>
+  <sb>    '=</sb>
+  <sb>    '-=</sb>
+  <sb>    '==</sb>
+  <sb>    '&gt;</sb>
+  <sb>    '-&gt;</sb>
+  <sb>    '-&gt;*</sb>
+  <sb>    '&gt;=</sb>
+  <sb>    '&gt;&gt;</sb>
+  <sb>    '&gt;&gt;=</sb>
+  <sb>    'and</sb>
+  <sb>    'and_eq</sb>
+  <sb>    'bitand</sb>
+  <sb>    'bitor</sb>
+  <sb>    'compl</sb>
+  <sb>    'delete</sb>
+  <sb>    'new</sb>
+  <sb>    'not</sb>
+  <sb>    'not_eq</sb>
+  <sb>    'or</sb>
+  <sb>    'or_eq</sb>
+  <sb>    'xor</sb>
+  <sb>    'xor_eq</sb>
+  <sb>punctuator</sb>
+  <sb>    '-</sb>
+  <sb>    '--</sb>
+  <sb>    '!</sb>
+  <sb>    '!=</sb>
+  <sb>    '#</sb>
+  <sb>    '##</sb>
+  <sb>    '%</sb>
+  <sb>    '%:</sb>
+  <sb>    '%:%:</sb>
+  <sb>    '%=</sb>
+  <sb>    '%&gt;</sb>
+  <sb>    '&amp;</sb>
+  <sb>    '&amp;&amp;</sb>
+  <sb>    '(</sb>
+  <sb>    ')</sb>
+  <sb>    '*</sb>
+  <sb>    '*=</sb>
+  <sb>    ',</sb>
+  <sb>    '.</sb>
+  <sb>    '.*</sb>
+  <sb>    '...</sb>
+  <sb>    '/</sb>
+  <sb>    '/=</sb>
+  <sb>    ':</sb>
+  <sb>    '::</sb>
+  <sb>    ':&gt;</sb>
+  <sb>    ';</sb>
+  <sb>    '?</sb>
+  <sb>    '[</sb>
+  <sb>    ']</sb>
+  <sb>    '^</sb>
+  <sb>    '^=</sb>
+  <sb>    '{</sb>
+  <sb>    '|</sb>
+  <sb>    '||</sb>
+  <sb>    '}</sb>
+  <sb>    '~</sb>
+  <sb>    '+</sb>
+  <sb>    '++</sb>
+  <sb>    '+=</sb>
+  <sb>    '&lt;</sb>
+  <sb>    '&lt;%</sb>
+  <sb>    '&lt;:</sb>
+  <sb>    '&lt;&lt;</sb>
+  <sb>    '&lt;&lt;=</sb>
+  <sb>    '&lt;=</sb>
+  <sb>    '=</sb>
+  <sb>    '-=</sb>
+  <sb>    '==</sb>
+  <sb>    '&gt;</sb>
+  <sb>    '-&gt;</sb>
+  <sb>    '-&gt;*</sb>
+  <sb>    '&gt;=</sb>
+  <sb>    '&gt;&gt;</sb>
+  <sb>    '&gt;&gt;=</sb>
+  <sb>    'and</sb>
+  <sb>    'and_eq</sb>
+  <sb>    'bitand</sb>
+  <sb>    'bitor</sb>
+  <sb>    'compl</sb>
+  <sb>    'delete</sb>
+  <sb>    'new</sb>
+  <sb>    'not</sb>
+  <sb>    'not_eq</sb>
+  <sb>    'or</sb>
+  <sb>    'or_eq</sb>
+  <sb>    'xor</sb>
+  <sb>    'xor_eq</sb>
+  <sb>namespace-name</sb>
+  <sb>    namespace-alias</sb>
+  <sb>    original-namespace-name</sb>
+  <sb>original-namespace-name</sb>
+  <sb>    identifier</sb>
+  <sb>namespace-alias</sb>
+  <sb>    identifier</sb>
+  <sb>new-expression</sb>
+  <sb>    ':: 'new '( type-id ')</sb>
+  <sb>    ':: 'new '( type-id ') new-initializer</sb>
+  <sb>    ':: 'new new-placement '( type-id ')</sb>
+  <sb>    ':: 'new new-placement '( type-id ') new-initializer</sb>
+  <sb>    ':: 'new new-placement new-type-id</sb>
+  <sb>    ':: 'new new-placement new-type-id new-initializer</sb>
+  <sb>    ':: 'new new-type-id</sb>
+  <sb>    ':: 'new new-type-id new-initializer</sb>
+  <sb>    'new '( type-id ')</sb>
+  <sb>    'new '( type-id ') new-initializer</sb>
+  <sb>    'new new-placement '( type-id ')</sb>
+  <sb>    'new new-placement '( type-id ') new-initializer</sb>
+  <sb>    'new new-placement new-type-id</sb>
+  <sb>    'new new-placement new-type-id new-initializer</sb>
+  <sb>    'new new-type-id</sb>
+  <sb>    'new new-type-id new-initializer</sb>
+  <sb>new-placement</sb>
+  <sb>    '( expression-list ')</sb>
+  <sb>new-type-id</sb>
+  <sb>    type-specifier-seq</sb>
+  <sb>    type-specifier-seq new-declarator</sb>
+  <sb>new-declarator</sb>
+  <sb>    noptr-new-declarator</sb>
+  <sb>    ptr-operator</sb>
+  <sb>    ptr-operator new-declarator</sb>
+  <sb>new-initializer</sb>
+  <sb>    '( ')</sb>
+  <sb>    '( expression-list ')</sb>
+  <sb>    braced-init-list</sb>
+  <sb>noptr-new-declarator</sb>
+  <sb>    '[ expression ']</sb>
+  <sb>    '[ expression '] attribute-specifier-seq</sb>
+  <sb>    noptr-new-declarator '[ constant-expression ']</sb>
+  <sb>    noptr-new-declarator '[ constant-expression '] attribute-specifier-seq</sb>
+  <sb>template-id</sb>
+  <sb>    literal-operator-id '&lt; '&gt;</sb>
+  <sb>    literal-operator-id '&lt; template-argument-list '&gt;</sb>
+  <sb>    operator-function-id '&lt; '&gt;</sb>
+  <sb>    operator-function-id '&lt; template-argument-list '&gt;</sb>
+  <sb>    simple-template-id</sb>
+  <sb>operator-function-id</sb>
+  <sb>    'operator overloadable-operator</sb>
+  <sb>    'operator overloadable-operator '&lt; '&gt;</sb>
+  <sb>    'operator overloadable-operator '&lt; template-argument-list '&gt;</sb>
+  <sb>overloadable-operator</sb>
+  <sb>    '-</sb>
+  <sb>    '--</sb>
+  <sb>    '!</sb>
+  <sb>    '!=</sb>
+  <sb>    '%</sb>
+  <sb>    '%=</sb>
+  <sb>    '&amp;</sb>
+  <sb>    '&amp;&amp;</sb>
+  <sb>    '&amp;=</sb>
+  <sb>    '()</sb>
+  <sb>    '*</sb>
+  <sb>    '*=</sb>
+  <sb>    ',</sb>
+  <sb>    '/</sb>
+  <sb>    '/=</sb>
+  <sb>    '[]</sb>
+  <sb>    '^</sb>
+  <sb>    '^=</sb>
+  <sb>    '|</sb>
+  <sb>    '||</sb>
+  <sb>    '|=</sb>
+  <sb>    '~</sb>
+  <sb>    '+</sb>
+  <sb>    '++</sb>
+  <sb>    '+=</sb>
+  <sb>    '&lt;</sb>
+  <sb>    '&lt;&lt;</sb>
+  <sb>    '&lt;&lt;=</sb>
+  <sb>    '&lt;=</sb>
+  <sb>    '=</sb>
+  <sb>    '-=</sb>
+  <sb>    '==</sb>
+  <sb>    '&gt;</sb>
+  <sb>    '-&gt;</sb>
+  <sb>    '-&gt;*</sb>
+  <sb>    '&gt;=</sb>
+  <sb>    '&gt;&gt;</sb>
+  <sb>    '&gt;&gt;=</sb>
+  <sb>    'delete</sb>
+  <sb>    'delete '[ ']</sb>
+  <sb>    'new</sb>
+  <sb>    'new '[ ']</sb>
+  <sb>literal-operator-id</sb>
+  <sb>    'operator '"" identifier</sb>
+  <sb>trailing-return-type</sb>
+  <sb>    '-&gt; trailing-type-specifier-seq</sb>
+  <sb>    '-&gt; trailing-type-specifier-seq abstract-declarator</sb>
+  <sb>trailing-type-specifier-seq</sb>
+  <sb>    trailing-type-specifier</sb>
+  <sb>    trailing-type-specifier attribute-specifier-seq</sb>
+  <sb>trailing-type-specifier</sb>
+  <sb>    cv-qualifier</sb>
+  <sb>    elaborated-type-specifier</sb>
+  <sb>    simple-type-specifier</sb>
+  <sb>    typename-specifier</sb>
+  <sb>type-specifier-seq</sb>
+  <sb>    type-specifier</sb>
+  <sb>    type-specifier attribute-specifier-seq</sb>
+  <sb>type-specifier</sb>
+  <sb>    class-specifier</sb>
+  <sb>    enum-specifier</sb>
+  <sb>    trailing-type-specifier</sb>
+  <sb>enum-specifier</sb>
+  <sb>    enum-head '{ '}</sb>
+  <sb>    enum-head '{ enumerator-list ', '}</sb>
+  <sb>    enum-head '{ enumerator-list '}</sb>
+  <sb>enum-head</sb>
+  <sb>    enum-key</sb>
+  <sb>    enum-key attribute-specifier-seq</sb>
+  <sb>    enum-key attribute-specifier-seq enum-base</sb>
+  <sb>    enum-key attribute-specifier-seq identifier</sb>
+  <sb>    enum-key attribute-specifier-seq identifier enum-base</sb>
+  <sb>    enum-key attribute-specifier-seq nested-name-specifier identifier</sb>
+  <sb>    enum-key attribute-specifier-seq nested-name-specifier identifier enum-base</sb>
+  <sb>    enum-key enum-base</sb>
+  <sb>    enum-key identifier</sb>
+  <sb>    enum-key identifier enum-base</sb>
+  <sb>    enum-key nested-name-specifier identifier</sb>
+  <sb>    enum-key nested-name-specifier identifier enum-base</sb>
+  <sb>enum-key</sb>
+  <sb>    'enum</sb>
+  <sb>    'enum 'class</sb>
+  <sb>    'enum 'struct</sb>
+  <sb>enum-base</sb>
+  <sb>    ': type-specifier-seq</sb>
+  <sb>enumerator-list</sb>
+  <sb>    enumerator-definition</sb>
+  <sb>    enumerator-list ', enumerator-definition</sb>
+  <sb>enumerator-definition</sb>
+  <sb>    enumerator</sb>
+  <sb>    enumerator '= constant-expression</sb>
+  <sb>enumerator</sb>
+  <sb>    identifier</sb>
+  <sb>typedef-name</sb>
+  <sb>    identifier</sb>
+  <sb>simple-type-specifier</sb>
+  <sb>    ':: nested-name-specifier 'template simple-template-id</sb>
+  <sb>    ':: nested-name-specifier type-name</sb>
+  <sb>    ':: type-name</sb>
+  <sb>    'auto</sb>
+  <sb>    'bool</sb>
+  <sb>    'char</sb>
+  <sb>    'char16_t</sb>
+  <sb>    'char32_t</sb>
+  <sb>    decltype-specifier</sb>
+  <sb>    'double</sb>
+  <sb>    'float</sb>
+  <sb>    'int</sb>
+  <sb>    'long</sb>
+  <sb>    nested-name-specifier type-name</sb>
+  <sb>    'short</sb>
+  <sb>    'signed</sb>
+  <sb>    type-name</sb>
+  <sb>    'unsigned</sb>
+  <sb>    'void</sb>
+  <sb>    'wchar_t</sb>
+  <sb>typename-specifier</sb>
+  <sb>    'typename ':: nested-name-specifier identifier</sb>
+  <sb>    'typename ':: nested-name-specifier simple-template-id</sb>
+  <sb>    'typename ':: nested-name-specifier 'template simple-template-id</sb>
+  <sb>    'typename nested-name-specifier identifier</sb>
+  <sb>    'typename nested-name-specifier simple-template-id</sb>
+  <sb>    'typename nested-name-specifier 'template simple-template-id</sb>
+  <sb>throw-expression</sb>
+  <sb>    'throw</sb>
+  <sb>    'throw assignment-expression</sb>
+  <sb>pseudo-destructor-name</sb>
+  <sb>    ':: '~ type-name</sb>
+  <sb>    ':: nested-name-specifier '~ type-name</sb>
+  <sb>    ':: nested-name-specifier 'template simple-template-id ':: '~ type-name</sb>
+  <sb>    ':: nested-name-specifier type-name ':: '~ type-name</sb>
+  <sb>    ':: type-name ':: '~ type-name</sb>
+  <sb>    '~ decltype-specifier</sb>
+  <sb>    '~ type-name</sb>
+  <sb>    nested-name-specifier '~ type-name</sb>
+  <sb>    nested-name-specifier 'template simple-template-id ':: '~ type-name</sb>
+  <sb>    nested-name-specifier type-name ':: '~ type-name</sb>
+  <sb>    type-name ':: '~ type-name</sb>
+  <sb>parameters-and-qualifiers</sb>
+  <sb>    '( parameter-declaration-clause ')</sb>
+  <sb>    '( parameter-declaration-clause ') attribute-specifier-seq</sb>
+  <sb>    '( parameter-declaration-clause ') attribute-specifier-seq cv-qualifier-seq</sb>
+  <sb>    '( parameter-declaration-clause ') attribute-specifier-seq cv-qualifier-seq exception-specification</sb>
+  <sb>    '( parameter-declaration-clause ') attribute-specifier-seq cv-qualifier-seq ref-qualifier</sb>
+  <sb>    '( parameter-declaration-clause ') attribute-specifier-seq cv-qualifier-seq ref-qualifier exception-specification</sb>
+  <sb>    '( parameter-declaration-clause ') attribute-specifier-seq exception-specification</sb>
+  <sb>    '( parameter-declaration-clause ') attribute-specifier-seq ref-qualifier</sb>
+  <sb>    '( parameter-declaration-clause ') attribute-specifier-seq ref-qualifier exception-specification</sb>
+  <sb>    '( parameter-declaration-clause ') cv-qualifier-seq</sb>
+  <sb>    '( parameter-declaration-clause ') cv-qualifier-seq exception-specification</sb>
+  <sb>    '( parameter-declaration-clause ') cv-qualifier-seq ref-qualifier</sb>
+  <sb>    '( parameter-declaration-clause ') cv-qualifier-seq ref-qualifier exception-specification</sb>
+  <sb>    '( parameter-declaration-clause ') exception-specification</sb>
+  <sb>    '( parameter-declaration-clause ') ref-qualifier</sb>
+  <sb>    '( parameter-declaration-clause ') ref-qualifier exception-specification</sb>
+  <sb>ref-qualifier</sb>
+  <sb>    '&amp;</sb>
+  <sb>    '&amp;&amp;</sb>
+  <sb>parameter-declaration-clause</sb>
+  <sb>    '...</sb>
+  <sb>    parameter-declaration-list</sb>
+  <sb>    parameter-declaration-list ', '...</sb>
+  <sb>    parameter-declaration-list '...</sb>
+  <sb>parameter-declaration-list</sb>
+  <sb>    parameter-declaration</sb>
+  <sb>    parameter-declaration-list ', parameter-declaration</sb>
+  <sb>parameter-declaration</sb>
+  <sb>    attribute-specifier-seq decl-specifier-seq</sb>
+  <sb>    attribute-specifier-seq decl-specifier-seq '= initializer-clause</sb>
+  <sb>    attribute-specifier-seq decl-specifier-seq abstract-declarator</sb>
+  <sb>    attribute-specifier-seq decl-specifier-seq abstract-declarator '= initializer-clause</sb>
+  <sb>    attribute-specifier-seq decl-specifier-seq declarator</sb>
+  <sb>    attribute-specifier-seq decl-specifier-seq declarator '= initializer-clause</sb>
+  <sb>    decl-specifier-seq</sb>
+  <sb>    decl-specifier-seq '= initializer-clause</sb>
+  <sb>    decl-specifier-seq abstract-declarator</sb>
+  <sb>    decl-specifier-seq abstract-declarator '= initializer-clause</sb>
+  <sb>    decl-specifier-seq declarator</sb>
+  <sb>    decl-specifier-seq declarator '= initializer-clause</sb>
+  <sb>declarator</sb>
+  <sb>    noptr-declarator parameters-and-qualifiers trailing-return-type</sb>
+  <sb>    ptr-declarator</sb>
+  <sb>ptr-declarator</sb>
+  <sb>    noptr-declarator</sb>
+  <sb>    ptr-operator ptr-declarator</sb>
+  <sb>preprocessing-token</sb>
+  <sb>    /char_lit</sb>
+  <sb>    /str_lit</sb>
+  <sb>    identifier</sb>
+  <sb>    pp-number</sb>
+  <sb>    preprocessing-op-or-punc</sb>
+  <sb>preprocessing-op-or-punc</sb>
+  <sb>    '-</sb>
+  <sb>    '--</sb>
+  <sb>    '!</sb>
+  <sb>    '!=</sb>
+  <sb>    '#</sb>
+  <sb>    '##</sb>
+  <sb>    '%</sb>
+  <sb>    '%:</sb>
+  <sb>    '%:%:</sb>
+  <sb>    '%=</sb>
+  <sb>    '%&gt;</sb>
+  <sb>    '&amp;</sb>
+  <sb>    '&amp;&amp;</sb>
+  <sb>    '(</sb>
+  <sb>    ')</sb>
+  <sb>    '*</sb>
+  <sb>    '*=</sb>
+  <sb>    ',</sb>
+  <sb>    '.</sb>
+  <sb>    '.*</sb>
+  <sb>    '...</sb>
+  <sb>    '/</sb>
+  <sb>    '/=</sb>
+  <sb>    ':</sb>
+  <sb>    '::</sb>
+  <sb>    ':&gt;</sb>
+  <sb>    ';</sb>
+  <sb>    '?</sb>
+  <sb>    '[</sb>
+  <sb>    ']</sb>
+  <sb>    '^</sb>
+  <sb>    '^=</sb>
+  <sb>    '{</sb>
+  <sb>    '|</sb>
+  <sb>    '||</sb>
+  <sb>    '}</sb>
+  <sb>    '~</sb>
+  <sb>    '+</sb>
+  <sb>    '++</sb>
+  <sb>    '+=</sb>
+  <sb>    '&lt;</sb>
+  <sb>    '&lt;%</sb>
+  <sb>    '&lt;:</sb>
+  <sb>    '&lt;&lt;</sb>
+  <sb>    '&lt;&lt;=</sb>
+  <sb>    '&lt;=</sb>
+  <sb>    '=</sb>
+  <sb>    '-=</sb>
+  <sb>    '==</sb>
+  <sb>    '&gt;</sb>
+  <sb>    '-&gt;</sb>
+  <sb>    '-&gt;*</sb>
+  <sb>    '&gt;=</sb>
+  <sb>    '&gt;&gt;</sb>
+  <sb>    '&gt;&gt;=</sb>
+  <sb>    'and</sb>
+  <sb>    'and_eq</sb>
+  <sb>    'bitand</sb>
+  <sb>    'bitor</sb>
+  <sb>    'compl</sb>
+  <sb>    'delete</sb>
+  <sb>    'new</sb>
+  <sb>    'not</sb>
+  <sb>    'not_eq</sb>
+  <sb>    'or</sb>
+  <sb>    'or_eq</sb>
+  <sb>    'xor</sb>
+  <sb>    'xor_eq</sb>
+  <sb>literal</sb>
+  <sb>    /char_lit</sb>
+  <sb>    /double_lit</sb>
+  <sb>    /hex_lit</sb>
+  <sb>    /int_lit</sb>
+  <sb>    /oct_lit</sb>
+  <sb>    /str_lit</sb>
+  <sb>    /number</sb>
+  <sb>    'false</sb>
+  <sb>    'nullptr</sb>
+  <sb>    'true</sb>
+  <sb>translation-unit</sb>
+  <sb>    declaration-seq</sb>
+  <sb>declaration-seq</sb>
+  <sb>    declaration</sb>
+  <sb>    declaration-seq declaration</sb>
+  <sb>declaration</sb>
+  <sb>    attribute-declaration</sb>
+  <sb>    block-declaration</sb>
+  <sb>    empty-declaration</sb>
+  <sb>    explicit-instantiation</sb>
+  <sb>    explicit-specialization</sb>
+  <sb>    function-definition</sb>
+  <sb>    linkage-specification</sb>
+  <sb>    namespace-definition</sb>
+  <sb>    template-declaration</sb>
+  <sb>block-declaration</sb>
+  <sb>    alias-declaration</sb>
+  <sb>    asm-definition</sb>
+  <sb>    namespace-alias-definition</sb>
+  <sb>    opaque-enum-declaration</sb>
+  <sb>    simple-declaration</sb>
+  <sb>    static_assert-declaration</sb>
+  <sb>    using-declaration</sb>
+  <sb>    using-directive</sb>
+  <sb>alias-declaration</sb>
+  <sb>    'using identifier '= type-id ';</sb>
+  <sb>static_assert-declaration</sb>
+  <sb>    'static_assert '( constant-expression ', string-literal ') ';</sb>
+  <sb>empty-declaration</sb>
+  <sb>    ';</sb>
+  <sb>attribute-declaration</sb>
+  <sb>    attribute-specifier-seq ';</sb>
+  <sb>decl-specifier</sb>
+  <sb>    'constexpr</sb>
+  <sb>    'friend</sb>
+  <sb>    function-specifier</sb>
+  <sb>    storage-class-specifier</sb>
+  <sb>    'typedef</sb>
+  <sb>    type-specifier</sb>
+  <sb>decl-specifier-seq</sb>
+  <sb>    decl-specifier</sb>
+  <sb>    decl-specifier attribute-specifier-seq</sb>
+  <sb>    decl-specifier decl-specifier-seq</sb>
+  <sb>storage-class-specifier</sb>
+  <sb>    'auto</sb>
+  <sb>    'extern</sb>
+  <sb>    'mutable</sb>
+  <sb>    'register</sb>
+  <sb>    'static</sb>
+  <sb>    'thread_local</sb>
+  <sb>function-specifier</sb>
+  <sb>    'explicit</sb>
+  <sb>    'inline</sb>
+  <sb>    'virtual</sb>
+  <sb>elaborated-type-specifier</sb>
+  <sb>    class-key ':: identifier</sb>
+  <sb>    class-key ':: nested-name-specifier identifier</sb>
+  <sb>    class-key ':: nested-name-specifier simple-template-id</sb>
+  <sb>    class-key ':: nested-name-specifier 'template simple-template-id</sb>
+  <sb>    class-key ':: simple-template-id</sb>
+  <sb>    class-key ':: 'template simple-template-id</sb>
+  <sb>    class-key attribute-specifier-seq ':: identifier</sb>
+  <sb>    class-key attribute-specifier-seq ':: nested-name-specifier identifier</sb>
+  <sb>    class-key attribute-specifier-seq identifier</sb>
+  <sb>    class-key attribute-specifier-seq nested-name-specifier identifier</sb>
+  <sb>    class-key identifier</sb>
+  <sb>    class-key nested-name-specifier identifier</sb>
+  <sb>    class-key nested-name-specifier simple-template-id</sb>
+  <sb>    class-key nested-name-specifier 'template simple-template-id</sb>
+  <sb>    class-key simple-template-id</sb>
+  <sb>    class-key 'template simple-template-id</sb>
+  <sb>    'enum ':: identifier</sb>
+  <sb>    'enum ':: nested-name-specifier identifier</sb>
+  <sb>    'enum identifier</sb>
+  <sb>    'enum nested-name-specifier identifier</sb>
+  <sb>opaque-enum-declaration</sb>
+  <sb>    enum-key attribute-specifier-seq identifier ';</sb>
+  <sb>    enum-key attribute-specifier-seq identifier enum-base ';</sb>
+  <sb>    enum-key identifier ';</sb>
+  <sb>    enum-key identifier enum-base ';</sb>
+  <sb>namespace-definition</sb>
+  <sb>    named-namespace-definition</sb>
+  <sb>    unnnamed-namespace-definition</sb>
+  <sb>named-namespace-definition</sb>
+  <sb>    extension-namespace-definition</sb>
+  <sb>    original-namespace-definition</sb>
+  <sb>original-namespace-definition</sb>
+  <sb>    'inline 'namespace identifier '{ namespace-body '}</sb>
+  <sb>    'namespace identifier '{ namespace-body '}</sb>
+  <sb>extension-namespace-definition</sb>
+  <sb>    'inline 'namespace original-namespace-name '{ namespace-body '}</sb>
+  <sb>    'namespace original-namespace-name '{ namespace-body '}</sb>
+  <sb>unnnamed-namespace-definition</sb>
+  <sb>    'inline 'namespace '{ namespace-body '}</sb>
+  <sb>    'namespace '{ namespace-body '}</sb>
+  <sb>namespace-body</sb>
+  <sb>    declaration-seq</sb>
+  <sb>namespace-alias-definition</sb>
+  <sb>    'namespace identifier '= qualified-namespace-specifier ';</sb>
+  <sb>qualified-namespace-specifier</sb>
+  <sb>    ':: namespace-name</sb>
+  <sb>    ':: nested-name-specifier namespace-name</sb>
+  <sb>    namespace-name</sb>
+  <sb>    nested-name-specifier namespace-name</sb>
+  <sb>using-declaration</sb>
+  <sb>    'using ':: nested-name-specifier unqualified-id ';</sb>
+  <sb>    'using ':: unqualified-id ';</sb>
+  <sb>    'using nested-name-specifier unqualified-id ';</sb>
+  <sb>    'using 'typename ':: nested-name-specifier unqualified-id ';</sb>
+  <sb>    'using 'typename nested-name-specifier unqualified-id ';</sb>
+  <sb>using-directive</sb>
+  <sb>    attribute-specifier-seq 'using 'namespace ':: namespace-name ';</sb>
+  <sb>    attribute-specifier-seq 'using 'namespace ':: nested-name-specifier namespace-name ';</sb>
+  <sb>    attribute-specifier-seq 'using 'namespace namespace-name ';</sb>
+  <sb>    attribute-specifier-seq 'using 'namespace nested-name-specifier namespace-name ';</sb>
+  <sb>    'using 'namespace ':: namespace-name ';</sb>
+  <sb>    'using 'namespace ':: nested-name-specifier namespace-name ';</sb>
+  <sb>    'using 'namespace namespace-name ';</sb>
+  <sb>    'using 'namespace nested-name-specifier namespace-name ';</sb>
+  <sb>asm-definition</sb>
+  <sb>    'asm '( /str_lit ') ';</sb>
+  <sb>linkage-specification</sb>
+  <sb>    'extern /str_lit '{ '}</sb>
+  <sb>    'extern /str_lit '{ declaration-seq '}</sb>
+  <sb>    'extern /str_lit declaration</sb>
+  <sb>init-declarator</sb>
+  <sb>    declarator</sb>
+  <sb>    declarator initializer</sb>
+  <sb>init-declarator-list</sb>
+  <sb>    init-declarator</sb>
+  <sb>    init-declarator-list ', init-declarator</sb>
+  <sb>noptr-declarator</sb>
+  <sb>    '( ptr-declarator ')</sb>
+  <sb>    declarator-id</sb>
+  <sb>    declarator-id attribute-specifier-seq</sb>
+  <sb>    noptr-declarator '[ ']</sb>
+  <sb>    noptr-declarator '[ '] attribute-specifier-seq</sb>
+  <sb>    noptr-declarator '[ constant-expression ']</sb>
+  <sb>    noptr-declarator '[ constant-expression '] attribute-specifier-seq</sb>
+  <sb>    noptr-declarator parameters-and-qualifiers</sb>
+  <sb>declarator-id</sb>
+  <sb>    '... id-expression</sb>
+  <sb>    ':: class-name</sb>
+  <sb>    ':: nested-name-specifier class-name</sb>
+  <sb>    class-name</sb>
+  <sb>    id-expression</sb>
+  <sb>    nested-name-specifier class-name</sb>
+  <sb>noptr-abstract-declarator</sb>
+  <sb>    '( ptr-abstract-declarator ')</sb>
+  <sb>    '[ constant-expression ']</sb>
+  <sb>    '[ constant-expression '] attribute-specifier-seq</sb>
+  <sb>    noptr-abstract-declarator '[ constant-expression ']</sb>
+  <sb>    noptr-abstract-declarator '[ constant-expression '] attribute-specifier-seq</sb>
+  <sb>    noptr-abstract-declarator parameters-and-qualifiers</sb>
+  <sb>    parameters-and-qualifiers</sb>
+  <sb>function-definition</sb>
+  <sb>    attribute-specifier-seq declarator '= 'default ';</sb>
+  <sb>    attribute-specifier-seq declarator '= 'delete ';</sb>
+  <sb>    attribute-specifier-seq declarator function-body</sb>
+  <sb>    attribute-specifier-seq decl-specifier-seq declarator '= 'default ';</sb>
+  <sb>    attribute-specifier-seq decl-specifier-seq declarator '= 'delete ';</sb>
+  <sb>    attribute-specifier-seq decl-specifier-seq declarator function-body</sb>
+  <sb>    declarator '= 'default ';</sb>
+  <sb>    declarator '= 'delete ';</sb>
+  <sb>    declarator function-body</sb>
+  <sb>    decl-specifier-seq declarator '= 'default ';</sb>
+  <sb>    decl-specifier-seq declarator '= 'delete ';</sb>
+  <sb>    decl-specifier-seq declarator function-body</sb>
+  <sb>function-body</sb>
+  <sb>    compound-statement</sb>
+  <sb>    ctor-initializer compound-statement</sb>
+  <sb>    function-try-block</sb>
+  <sb>initializer</sb>
+  <sb>    '( expression-list ')</sb>
+  <sb>    brace-or-equal-initializer</sb>
+  <sb>brace-or-equal-initializer</sb>
+  <sb>    '= initializer-clause</sb>
+  <sb>    braced-init-list</sb>
+  <sb>class-specifier</sb>
+  <sb>    class-head '{ '}</sb>
+  <sb>    class-head '{ member-specification '}</sb>
+  <sb>class-head</sb>
+  <sb>    class-key</sb>
+  <sb>    class-key attribute-specifier-seq</sb>
+  <sb>    class-key attribute-specifier-seq base-clause</sb>
+  <sb>    class-key attribute-specifier-seq class-head-name</sb>
+  <sb>    class-key attribute-specifier-seq class-head-name base-clause</sb>
+  <sb>    class-key attribute-specifier-seq class-head-name class-virt-specifier-seq</sb>
+  <sb>    class-key attribute-specifier-seq class-head-name class-virt-specifier-seq base-clause</sb>
+  <sb>    class-key base-clause</sb>
+  <sb>    class-key class-head-name</sb>
+  <sb>    class-key class-head-name base-clause</sb>
+  <sb>    class-key class-head-name class-virt-specifier-seq</sb>
+  <sb>    class-key class-head-name class-virt-specifier-seq base-clause</sb>
+  <sb>class-head-name</sb>
+  <sb>    class-name</sb>
+  <sb>    nested-name-specifier class-name</sb>
+  <sb>class-virt-specifier-seq</sb>
+  <sb>    class-virt-specifier</sb>
+  <sb>    class-virt-specifier-seq class-virt-specifier</sb>
+  <sb>class-virt-specifier</sb>
+  <sb>    'explicit</sb>
+  <sb>    'final</sb>
+  <sb>class-key</sb>
+  <sb>    'class</sb>
+  <sb>    'struct</sb>
+  <sb>    'union</sb>
+  <sb>member-specification</sb>
+  <sb>    access-specifier ':</sb>
+  <sb>    access-specifier ': member-specification</sb>
+  <sb>    member-declaration</sb>
+  <sb>    member-declaration member-specification</sb>
+  <sb>member-declaration</sb>
+  <sb>    ';</sb>
+  <sb>    alias-declaration</sb>
+  <sb>    attribute-specifier-seq ';</sb>
+  <sb>    attribute-specifier-seq decl-specifier-seq ';</sb>
+  <sb>    attribute-specifier-seq decl-specifier-seq member-declarator-list ';</sb>
+  <sb>    attribute-specifier-seq member-declarator-list ';</sb>
+  <sb>    decl-specifier-seq ';</sb>
+  <sb>    decl-specifier-seq member-declarator-list ';</sb>
+  <sb>    function-definition ';</sb>
+  <sb>    member-declarator-list ';</sb>
+  <sb>    static_assert-declaration</sb>
+  <sb>    template-declaration</sb>
+  <sb>    using-declaration</sb>
+  <sb>member-declarator-list</sb>
+  <sb>    member-declarator</sb>
+  <sb>    member-declarator-list ', member-declarator</sb>
+  <sb>member-declarator</sb>
+  <sb>    ': constant-expression</sb>
+  <sb>    attribute-specifier-seq ': constant-expression</sb>
+  <sb>    attribute-specifier-seq virt-specifier-seq ': constant-expression</sb>
+  <sb>    declarator</sb>
+  <sb>    declarator brace-or-equal-initializer</sb>
+  <sb>    declarator pure-specifier</sb>
+  <sb>    declarator virt-specifier-seq</sb>
+  <sb>    declarator virt-specifier-seq brace-or-equal-initializer</sb>
+  <sb>    declarator virt-specifier-seq pure-specifier</sb>
+  <sb>    identifier ': constant-expression</sb>
+  <sb>    identifier attribute-specifier-seq ': constant-expression</sb>
+  <sb>    identifier attribute-specifier-seq virt-specifier-seq ': constant-expression</sb>
+  <sb>    identifier virt-specifier-seq ': constant-expression</sb>
+  <sb>    virt-specifier-seq ': constant-expression</sb>
+  <sb>virt-specifier-seq</sb>
+  <sb>    virt-specifier</sb>
+  <sb>    virt-specifier-seq virt-specifier</sb>
+  <sb>virt-specifier</sb>
+  <sb>    'final</sb>
+  <sb>    'new</sb>
+  <sb>    'override</sb>
+  <sb>pure-specifier</sb>
+  <sb>    '= '0</sb>
+  <sb>base-clause</sb>
+  <sb>    ': base-specifier-list</sb>
+  <sb>base-specifier-list</sb>
+  <sb>    base-specifier</sb>
+  <sb>    base-specifier '...</sb>
+  <sb>    base-specifier-list ', base-specifier</sb>
+  <sb>    base-specifier-list ', base-specifier '...</sb>
+  <sb>base-specifier</sb>
+  <sb>    access-specifier base-type-specifier</sb>
+  <sb>    access-specifier 'virtual base-type-specifier</sb>
+  <sb>    attribute-specifier-seq access-specifier base-type-specifier</sb>
+  <sb>    attribute-specifier-seq access-specifier 'virtual base-type-specifier</sb>
+  <sb>    attribute-specifier-seq base-type-specifier</sb>
+  <sb>    attribute-specifier-seq 'virtual access-specifier base-type-specifier</sb>
+  <sb>    attribute-specifier-seq 'virtual base-type-specifier</sb>
+  <sb>    base-type-specifier</sb>
+  <sb>    'virtual access-specifier base-type-specifier</sb>
+  <sb>    'virtual base-type-specifier</sb>
+  <sb>base-type-specifier</sb>
+  <sb>    class-or-decltype</sb>
+  <sb>access-specifier</sb>
+  <sb>    'private</sb>
+  <sb>    'protected</sb>
+  <sb>    'public</sb>
+  <sb>class-or-decltype</sb>
+  <sb>    ':: class-name</sb>
+  <sb>    ':: nested-name-specifier class-name</sb>
+  <sb>    class-name</sb>
+  <sb>    decltype-specifier</sb>
+  <sb>    nested-name-specifier class-name</sb>
+  <sb>conversion-function-id</sb>
+  <sb>    'operator conversion-type-id</sb>
+  <sb>conversion-type-id</sb>
+  <sb>    type-specifier-seq</sb>
+  <sb>    type-specifier-seq conversion-declarator</sb>
+  <sb>conversion-declarator</sb>
+  <sb>    ptr-operator</sb>
+  <sb>    ptr-operator conversion-declarator</sb>
+  <sb>ctor-initializer</sb>
+  <sb>    ': mem-initializer-list</sb>
+  <sb>mem-initializer-list</sb>
+  <sb>    mem-initializer</sb>
+  <sb>    mem-initializer ', mem-initializer-list</sb>
+  <sb>    mem-initializer ', mem-initializer-list '...</sb>
+  <sb>    mem-initializer '...</sb>
+  <sb>mem-initializer</sb>
+  <sb>    mem-initializer-id '( ')</sb>
+  <sb>    mem-initializer-id '( expression-list ')</sb>
+  <sb>    mem-initializer-id braced-init-list</sb>
+  <sb>mem-initializer-id</sb>
+  <sb>    class-or-decltype</sb>
+  <sb>    identifier</sb>
+  <sb>template-declaration</sb>
+  <sb>    'template '&lt; template-parameter-list '&gt; declaration</sb>
+  <sb>template-parameter-list</sb>
+  <sb>    template-parameter</sb>
+  <sb>    template-parameter-list ', template-parameter</sb>
+  <sb>template-parameter</sb>
+  <sb>    parameter-declaration</sb>
+  <sb>    type-parameter</sb>
+  <sb>type-parameter</sb>
+  <sb>    'class</sb>
+  <sb>    'class '...</sb>
+  <sb>    'class '... identifier</sb>
+  <sb>    'class '= type-id</sb>
+  <sb>    'class identifier</sb>
+  <sb>    'class identifier '= type-id</sb>
+  <sb>    'template '&lt; template-parameter-list '&gt; 'class</sb>
+  <sb>    'template '&lt; template-parameter-list '&gt; 'class '...</sb>
+  <sb>    'template '&lt; template-parameter-list '&gt; 'class '... identifier</sb>
+  <sb>    'template '&lt; template-parameter-list '&gt; 'class '= id-expression</sb>
+  <sb>    'template '&lt; template-parameter-list '&gt; 'class identifier</sb>
+  <sb>    'template '&lt; template-parameter-list '&gt; 'class identifier '= id-expression</sb>
+  <sb>    'typename</sb>
+  <sb>    'typename '...</sb>
+  <sb>    'typename '... identifier</sb>
+  <sb>    'typename '= type-id</sb>
+  <sb>    'typename identifier</sb>
+  <sb>    'typename identifier '= type-id</sb>
+  <sb>explicit-instantiation</sb>
+  <sb>    'extern 'template declaration</sb>
+  <sb>    'template declaration</sb>
+  <sb>exception-specification</sb>
+  <sb>    dynamic-exception-specification</sb>
+  <sb>    noexcept-specification</sb>
+  <sb>function-try-block</sb>
+  <sb>    'try compound-statement handler-seq</sb>
+  <sb>    'try ctor-initializer compound-statement handler-seq</sb>
+  <sb>handler-seq</sb>
+  <sb>    handler</sb>
+  <sb>    handler handler-seq</sb>
+  <sb>handler</sb>
+  <sb>    'catch '( exception-declaration ') compound-statement</sb>
+  <sb>exception-declaration</sb>
+  <sb>    '...</sb>
+  <sb>    attribute-specifier-seq type-specifier-seq</sb>
+  <sb>    attribute-specifier-seq type-specifier-seq abstract-declarator</sb>
+  <sb>    attribute-specifier-seq type-specifier-seq declarator</sb>
+  <sb>    type-specifier-seq</sb>
+  <sb>    type-specifier-seq abstract-declarator</sb>
+  <sb>    type-specifier-seq declarator</sb>
+  <sb>explicit-specialization</sb>
+  <sb>    'template '&lt; '&gt; declaration</sb>
+  <sb>dynamic-exception-specification</sb>
+  <sb>    'throw '( ')</sb>
+  <sb>    'throw '( type-id-list ')</sb>
+  <sb>type-id-list</sb>
+  <sb>    type-id</sb>
+  <sb>    type-id '...</sb>
+  <sb>    type-id-list ', type-id</sb>
+  <sb>    type-id-list ', type-id '...</sb>
+  <sb>noexcept-specification</sb>
+  <sb>    'noexcept</sb>
+  <sb>    'noexcept '( constant-expression ')</sb>
+  <sb>lambda-expression</sb>
+  <sb>    lambda-introducer compound-statement</sb>
+  <sb>    lambda-introducer lambda-declarator compound-statement</sb>
+  <sb>lambda-introducer</sb>
+  <sb>    '[ ']</sb>
+  <sb>    '[ lambda-capture ']</sb>
+  <sb>lambda-capture</sb>
+  <sb>    capture-default</sb>
+  <sb>    capture-default ', capture-list</sb>
+  <sb>    capture-list</sb>
+  <sb>capture-default</sb>
+  <sb>    '&amp;</sb>
+  <sb>    '=</sb>
+  <sb>capture-list</sb>
+  <sb>    capture</sb>
+  <sb>    capture '...</sb>
+  <sb>    capture-list ', capture</sb>
+  <sb>    capture-list ', capture '...</sb>
+  <sb>capture</sb>
+  <sb>    '&amp; identifier</sb>
+  <sb>    identifier</sb>
+  <sb>    'this</sb>
+  <sb>lambda-declarator</sb>
+  <sb>    '( parameter-declaration-clause ') attribute-specifier-seq trailing-return-type</sb>
+  <sb>    '( parameter-declaration-clause ') exception-specification attribute-specifier-seq trailing-return-type</sb>
+  <sb>    '( parameter-declaration-clause ') exception-specification trailing-return-type</sb>
+  <sb>    '( parameter-declaration-clause ') 'mutable attribute-specifier-seq trailing-return-type</sb>
+  <sb>    '( parameter-declaration-clause ') 'mutable exception-specification attribute-specifier-seq trailing-return-type</sb>
+  <sb>    '( parameter-declaration-clause ') 'mutable exception-specification trailing-return-type</sb>
+  <sb>    '( parameter-declaration-clause ') 'mutable trailing-return-type</sb>
+  <sb>    '( parameter-declaration-clause ') trailing-return-type</sb>
+  <sb>compound-statement</sb>
+  <sb>    '{ '}</sb>
+  <sb>    '{ statement-seq '}</sb>
+  <sb>statement-seq</sb>
+  <sb>    statement</sb>
+  <sb>    statement-seq statement</sb>
+  <sb>statement</sb>
+  <sb>    attribute-specifier-seq compound-statement</sb>
+  <sb>    attribute-specifier-seq expression-statement</sb>
+  <sb>    attribute-specifier-seq iteration-statement</sb>
+  <sb>    attribute-specifier-seq jump-statement</sb>
+  <sb>    attribute-specifier-seq selection-statement</sb>
+  <sb>    attribute-specifier-seq try-block</sb>
+  <sb>    compound-statement</sb>
+  <sb>    declaration-statement</sb>
+  <sb>    expression-statement</sb>
+  <sb>    iteration-statement</sb>
+  <sb>    jump-statement</sb>
+  <sb>    labeled-statement</sb>
+  <sb>    selection-statement</sb>
+  <sb>    try-block</sb>
+  <sb>labeled-statement</sb>
+  <sb>    attribute-specifier-seq 'case constant-expression ': statement</sb>
+  <sb>    attribute-specifier-seq 'default ': statement</sb>
+  <sb>    attribute-specifier-seq identifier ': statement</sb>
+  <sb>    'case constant-expression ': statement</sb>
+  <sb>    'default ': statement</sb>
+  <sb>    identifier ': statement</sb>
+  <sb>expression-statement</sb>
+  <sb>    ';</sb>
+  <sb>    expression ';</sb>
+  <sb>selection-statement</sb>
+  <sb>    'if '( condition ') statement</sb>
+  <sb>    'if '( condition ') statement 'else statement</sb>
+  <sb>    'switch '( condition ') statement</sb>
+  <sb>condition</sb>
+  <sb>    attribute-specifier-seq decl-specifier-seq declarator '= initializer-clause</sb>
+  <sb>    attribute-specifier-seq decl-specifier-seq declarator braced-init-list</sb>
+  <sb>    decl-specifier-seq declarator '= initializer-clause</sb>
+  <sb>    decl-specifier-seq declarator braced-init-list</sb>
+  <sb>    expression</sb>
+  <sb>iteration-statement</sb>
+  <sb>    'do statement 'while '( expression ') ';</sb>
+  <sb>    'for '( for-init-statement '; ') statement</sb>
+  <sb>    'for '( for-init-statement '; expression ') statement</sb>
+  <sb>    'for '( for-init-statement condition '; ') statement</sb>
+  <sb>    'for '( for-init-statement condition '; expression ') statement</sb>
+  <sb>    'for '( for-range-declaration ': for-range-initializer ') statement</sb>
+  <sb>    'while '( condition ') statement</sb>
+  <sb>for-init-statement</sb>
+  <sb>    expression-statement</sb>
+  <sb>    simple-declaration</sb>
+  <sb>for-range-declaration</sb>
+  <sb>    attribute-specifier-seq type-specifier-seq declarator</sb>
+  <sb>    type-specifier-seq declarator</sb>
+  <sb>for-range-initializer</sb>
+  <sb>    expression braced-init-list</sb>
+  <sb>jump-statement</sb>
+  <sb>    'break ';</sb>
+  <sb>    'continue ';</sb>
+  <sb>    'goto identifier ';</sb>
+  <sb>    'return ';</sb>
+  <sb>    'return braced-init-list ';</sb>
+  <sb>    'return expression ';</sb>
+  <sb>declaration-statement</sb>
+  <sb>    block-declaration</sb>
+  <sb>simple-declaration</sb>
+  <sb>    ';</sb>
+  <sb>    attribute-specifier-seq ';</sb>
+  <sb>    attribute-specifier-seq decl-specifier-seq ';</sb>
+  <sb>    attribute-specifier-seq decl-specifier-seq init-declarator-list ';</sb>
+  <sb>    attribute-specifier-seq init-declarator-list ';</sb>
+  <sb>    decl-specifier-seq ';</sb>
+  <sb>    decl-specifier-seq init-declarator-list ';</sb>
+  <sb>    init-declarator-list ';</sb>
+  <sb>try-block</sb>
+  <sb>    'try compound-statement handler-seq</sb>
+  <sb>string-literal</sb>
+  <sb>    /str_lit</sb>
+  <sb>pp-number</sb>
+  <sb>    /double_lit</sb>
+  <sb>    /hex_lit</sb>
+  <sb>    /int_lit</sb>
+  <sb>    /oct_lit</sb>
+  <sb>    /number</sb>
+  <sbo>spaces</sbo>
+  <sbo>newline</sbo>
+  <sbo>comment</sbo>
+  <sbo>comment_inline</sbo>
+  <sbmain>preprocessing-file</sbmain>
+</streamtotext>
